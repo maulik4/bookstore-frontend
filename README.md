@@ -1,46 +1,90 @@
-# bookstore-frontend
+# Vue3 BookStore Application
 
-This template should help get you started developing with Vue 3 in Vite.
+## Installation
 
-## Recommended IDE Setup
+Follow these steps to set up the application:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+1. **Clone the repository:**
 
-## Type Support for `.vue` Imports in TS
+    ```bash
+    git clone https://github.com/maulik4/bookstore-frontend.git
+    ```
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+2. **Navigate to the project directory:**
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+    ```bash
+    cd bookstore-frontend
+    ```
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+3. **Install dependencies:**
 
-## Customize configuration
+    ```bash
+    npm install
+    ```
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+4. **Copy the `.env.example` file to `.env`:**
 
-## Project Setup
+    ```bash
+    cp .env.example .env
+    ```
 
-```sh
-npm install
-```
+5. **Open the `.env` file and set the API and Image URL:**
 
-### Compile and Hot-Reload for Development
+    ```env
+    VITE_API_URL=http://your-api-url
+    VITE_API_VERSION=v1
+    ```
 
-```sh
-npm run dev
-```
+6. **Run the development server:**
 
-### Type-Check, Compile and Minify for Production
+    ```bash
+    npm run dev
+    ```
 
-```sh
-npm run build
-```
+7. **Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the customer portal.**
 
-### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```
+8. **Open your browser and navigate to [http://localhost:3000/admin](http://localhost:3000/admin) to access the admin portal.**
+
+
+
+## Implementation
+
+### Customer Portal
+
+#### Browse Books
+
+- Navigate to the home page to see a list of all available books.
+
+![Home Page](readme_images/home_page.png)
+
+#### Search Books
+
+- Utilize the search functionality to find books based on title, author, publisher, published date, ISBN, or Genre.
+
+![Search](readme_images/search.png)
+
+#### View Book Details
+
+- Click on the title of a book to view its details.
+
+![Book Details](readme_images/book_details.png)
+
+### Admin Portal
+
+#### Authentication
+
+- Use the administrator login,logout and registration functionality to access the admin portal
+
+![Login](readme_images/login.png)
+
+![Registration](readme_images/register.png)
+
+#### Book Management
+
+- Perform CRUD operations for books.
+
+![Admin Book List](readme_images/admin_book_list.png)
+![Admin Book Add](readme_images/admin_book_add.png)
+![Admin Book Edit](readme_images/admin_book_edit.png)
+![Admin Book View](readme_images/admin_book_view.png)

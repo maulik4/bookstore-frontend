@@ -1,23 +1,51 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import CustomerLayout from '../views/layouts/CustomerLayout.vue'
+import AdminLayout from '../views/layouts/AdminLayout.vue'
+import store from '../store'
+import adminRoutes from './adminRoutes'
+import customerRoutes from './customerRoutes'
 
+/**
+ * Define routes and their components
+ */
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
+	history: createWebHistory(),
+	routes: [
+		{
+			path: '/',
+			component: CustomerLayout,
+			children: customerRoutes
+		},
+		{
+			path: '/admin',
+			component: AdminLayout,
+			children: adminRoutes
+		}
+		// Add more routes as needed
+	]
 })
 
+/**
+ * Check if user is authenticated before each route change
+ */
+router.beforeEach((to, from, next) => {
+	if (
+		to.name &&
+		to.name.startsWith('Admin') &&
+		to.meta.requiresAuth &&
+		!store.getters.isAuthenticated
+	) {
+		// Redirect to login if trying to access a protected route without authentication
+		next('/admin/login')
+	} else if (
+		to.name &&
+		to.name.startsWith('Admin') &&
+		!to.meta.requiresAuth &&
+		store.getters.isAuthenticated
+	) {
+		next('/admin/books')
+	} else {
+		next()
+	}
+})
 export default router
